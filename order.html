@@ -61,6 +61,11 @@
       gap: 14px;
       border-radius: 18px;
       background: var(--beige);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .order-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgb(92 61 46 / 12%);
     }
     .item-info h3 { margin: 0 0 4px; color: var(--cocoa); font-size: 1.05rem; }
     .item-info p { margin: 0; color: var(--caramel); font-weight: 800; }
@@ -153,6 +158,10 @@
       .site-header, main { width: calc(100% - 28px); }
       .order-item { padding: 16px; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .order-item { transition: none; }
+      .order-item:hover { transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -225,6 +234,7 @@
       { name: "Garden Sandwich", icon: "🥪", price: 850 },
       { name: "Melted Cheese Panini", icon: "🧀", price: 950 },
       { name: "NY Special Panini", icon: "🧀", price: 950 },
+      { name: "Beef Panini", icon: "🧀", price: 1100 },
       { name: "Creamy Herb Pasta", icon: "🍝", price: 1250 },
       { name: "Hot Coffee", icon: "☕", price: 550 },
       { name: "Hot Tea", icon: "☕", price: 350 },

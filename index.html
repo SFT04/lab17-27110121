@@ -116,6 +116,11 @@
       align-items: flex-start;
       border-radius: 20px;
       background: var(--beige);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .menu-card:hover {
+      transform: translateY(-7px) rotate(-0.5deg);
+      box-shadow: 0 12px 24px rgb(92 61 46 / 12%);
     }
     .menu-card h4 { margin: 0 0 5px; font-size: 1.1rem; }
     .menu-card p { margin: 0; }
@@ -155,6 +160,10 @@
       .site-nav { gap: 14px; font-size: 0.9rem; }
       .hero, .menu-section, .about { width: calc(100% - 28px); }
       .menu-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .menu-card { transition: none; }
+      .menu-card:hover { transform: none; }
     }
   </style>
 </head>
@@ -214,6 +223,7 @@
           <article class="menu-card"><h4>🥪 Garden Sandwich</h4><p>Fresh vegetables with our creamy house spread.</p><p class="price">Rs 850</p></article>
           <article class="menu-card"><h4>🧀 Melted Cheese Panini</h4><p>Toasted bread with warm, melty cheese.</p><p class="price">Rs 950</p></article>
           <article class="menu-card"><h4>🧀 NY Special Panini</h4><p>A hearty toasted panini with our New York-inspired filling.</p><p class="price">Rs 950</p></article>
+          <article class="menu-card"><h4>🧀 Beef Panini</h4><p>A side of fries and our special spiller sauce.</p><p class="price">Rs 1,100</p></article>
         </div>
       </section>
 
@@ -231,7 +241,7 @@
           <article class="menu-card"><h4>☕ Hot Tea</h4><p>A comforting cup of freshly steeped tea.</p><p class="price">Rs 350</p></article>
           <article class="menu-card"><h4>🧋 Iced Latte</h4><p>Chilled espresso and milk over ice.</p><p class="price">Rs 650</p></article>
           <article class="menu-card"><h4>🧋 Iced Tea</h4><p>Refreshing tea served cold over ice.</p><p class="price">Rs 450</p></article>
-          <article class="menu-card"><h4>🥤 Ice Cream Milkshake</h4><p>A cool, creamy treat blended with ice cream.</p><p class="price">Medium Rs 650 · Large Rs 800</p></article>
+          <article class="menu-card"><h4>🥤 Ice Cream Milkshake</h4><p>M Rs 650, L Rs 800</p><p class="price">Medium Rs 650 · Large Rs 800</p></article>
         </div>
       </section>
     </section>
