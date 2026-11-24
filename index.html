@@ -143,6 +143,16 @@
       padding: clamp(24px, 4vw, 38px);
       border-radius: 26px;
       background: var(--beige);
+      animation: review-pop 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .review-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 24px rgb(92 61 46 / 12%);
+    }
+    @keyframes review-pop {
+      from { opacity: 0; transform: translateY(16px) scale(0.94); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
     .review-card summary {
       color: var(--caramel);
@@ -185,6 +195,8 @@
     @media (prefers-reduced-motion: reduce) {
       .menu-card { transition: none; }
       .menu-card:hover { transform: none; }
+      .review-card { animation: none; transition: none; }
+      .review-card:hover { transform: none; }
     }
   </style>
 </head>
@@ -230,8 +242,8 @@
       <section class="menu-group" aria-labelledby="sweet-title">
         <h3 id="sweet-title">Sweet Tooth</h3>
         <div class="menu-grid">
-          <article class="menu-card"><h4>🍫 Classic Brownie</h4><p>Rich chocolate with a soft, fudgy centre.</p><p class="price">Rs 400</p></article>
-          <article class="menu-card"><h4>🍫 Fudge Brownie</h4><p>A deeply chocolatey brownie with a fudgy finish.</p><p class="price">Rs 500</p></article>
+          <article class="menu-card"><h4>🍫 Classic Brownie</h4><p>A delicate chocolate brownie that melts in your mouth.</p><p class="price">Rs 400</p></article>
+          <article class="menu-card"><h4>🍫 Fudge Brownie</h4><p>A deep chocolatey brownie with a fudgy finish.</p><p class="price">Rs 500</p></article>
           <article class="menu-card"><h4>🍰 Cake Slice</h4><p>Light, fluffy cake layered with smooth frosting.</p><p class="price">Rs 550</p></article>
           <article class="menu-card"><h4>🍪 Chocolate Chip Cookie</h4><p>A golden, chewy cookie packed with chocolate.</p><p class="price">Rs 350</p></article>
           <article class="menu-card"><h4>🍪 Hazelnut Cookie</h4><p>A golden, chewy cookie with toasted hazelnut.</p><p class="price">Rs 350</p></article>
@@ -244,7 +256,7 @@
           <article class="menu-card"><h4>🥪 Garden Sandwich</h4><p>Fresh vegetables with our creamy house spread.</p><p class="price">Rs 850</p></article>
           <article class="menu-card"><h4>🧀 Melted Cheese Panini</h4><p>Toasted bread with warm, melty cheese.</p><p class="price">Rs 950</p></article>
           <article class="menu-card"><h4>🧀 NY Special Panini</h4><p>A hearty toasted panini with our New York-inspired filling.</p><p class="price">Rs 950</p></article>
-          <article class="menu-card"><h4>🧀 Beef Panini</h4><p>A side of fries and our special spiller sauce.</p><p class="price">Rs 1,100</p></article>
+          <article class="menu-card"><h4>🧀 Beef Panini</h4><p>A side of fries served with our special spiller sauce.</p><p class="price">Rs 1,100</p></article>
         </div>
       </section>
 
