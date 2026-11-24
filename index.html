@@ -89,7 +89,7 @@
       object-position: left center;
     }
     main { padding-bottom: 56px; }
-    .menu-section, .about {
+    .menu-section, .about-review {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto 74px;
     }
@@ -125,13 +125,33 @@
     .menu-card h4 { margin: 0 0 5px; font-size: 1.1rem; }
     .menu-card p { margin: 0; }
     .menu-card .price { margin-top: auto; padding-top: 12px; color: var(--caramel); font-weight: 800; }
+    .about-review {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      align-items: stretch;
+      gap: 20px;
+    }
     .about {
+      margin: 0;
       padding: clamp(28px, 5vw, 54px);
       border-radius: 26px;
       background: var(--blush);
       text-align: center;
     }
     .about p { max-width: 700px; margin: 14px auto 24px; }
+    .review-card {
+      padding: clamp(24px, 4vw, 38px);
+      border-radius: 26px;
+      background: var(--beige);
+    }
+    .review-card summary {
+      color: var(--caramel);
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .review-stars { font-size: 1.35rem; letter-spacing: 0.08em; }
+    .review-card blockquote { margin: 18px 0 12px; font-size: 1.1rem; font-weight: 700; }
+    .review-card cite { font-style: normal; }
     .button {
       min-height: 48px;
       padding: 12px 24px;
@@ -154,11 +174,12 @@
       .hero-copy { padding-bottom: 28px; }
       .hero-photo { height: clamp(220px, 62vw, 340px); }
       .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-review { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .site-header { width: min(100% - 28px, 1120px); min-height: 72px; }
       .site-nav { gap: 14px; font-size: 0.9rem; }
-      .hero, .menu-section, .about { width: calc(100% - 28px); }
+      .hero, .menu-section, .about-review { width: calc(100% - 28px); }
       .menu-grid { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -197,7 +218,7 @@
       <section class="menu-group" aria-labelledby="pastries-title">
         <h3 id="pastries-title">Pastries</h3>
         <div class="menu-grid">
-          <article class="menu-card"><h4>🥐 Butter Croissant</h4><p>Flaky, golden layers with a buttery finish.</p><p class="price">Rs 450</p></article>
+          <article class="menu-card"><h4>🥐 Butter Croissant</h4><p>Flaky, golden layers with a buttery finish.</p><p class="price">Rs 400</p></article>
           <article class="menu-card"><h4>🥐 Chocolate Croissant</h4><p>Flaky pastry filled with rich chocolate.</p><p class="price">Rs 400</p></article>
           <article class="menu-card"><h4>🥧 Tarte au Citron</h4><p>A classic French lemon tart.</p><p class="price">Rs 750</p></article>
           <article class="menu-card"><h4>🥧 Raspberry Frangipane Tart</h4><p>Almond cream with fresh raspberries.</p><p class="price">Rs 750</p></article>
@@ -237,23 +258,30 @@
       <section class="menu-group" aria-labelledby="drinks-title">
         <h3 id="drinks-title">Drinks</h3>
         <div class="menu-grid">
-          <article class="menu-card"><h4>☕ Hot Coffee</h4><p>Freshly brewed coffee, served warm.</p><p class="price">Rs 550</p></article>
+          <article class="menu-card"><h4>☕ Coffee</h4><p>Espresso, cappuccino, americano, and Spanish.</p><p class="price">M Rs 700, L Rs 850</p></article>
           <article class="menu-card"><h4>☕ Hot Tea</h4><p>A comforting cup of freshly steeped tea.</p><p class="price">Rs 350</p></article>
           <article class="menu-card"><h4>🧋 Iced Latte</h4><p>Chilled espresso and milk over ice.</p><p class="price">Rs 650</p></article>
           <article class="menu-card"><h4>🧋 Iced Tea</h4><p>Refreshing tea served cold over ice.</p><p class="price">Rs 450</p></article>
-          <article class="menu-card"><h4>🥤 Ice Cream Milkshake</h4><p>M Rs 650, L Rs 800</p><p class="price">Medium Rs 650 · Large Rs 800</p></article>
+          <article class="menu-card"><h4>🥤 Ice Cream Milkshake</h4><p class="price">M Rs 650, L Rs 800</p></article>
         </div>
       </section>
     </section>
 
-    <section class="about" id="about" aria-labelledby="about-title">
-      <p class="eyebrow">A warm welcome, always</p>
-      <h2 id="about-title">A little corner to feel at home</h2>
-      <p>At Spill., we make the good things fresh and serve them with a little extra love. Stop by for a pastry, stay for a cup, and make yourself at home.</p>
-      <a class="button" href="order.html">Order now</a>
-      <a class="button" href="tel:03001234567">Call us</a>
-      <a class="button" href="mailto:hello@spillcafe.com">Email us</a>
-    </section>
+    <div class="about-review">
+      <section class="about" id="about" aria-labelledby="about-title">
+        <p class="eyebrow">A warm welcome, always</p>
+        <h2 id="about-title">A little corner to feel at home</h2>
+        <p>At Spill., we make the good things fresh and serve them with a little extra love. Stop by for a pastry, stay for a cup, and make yourself at home.</p>
+        <a class="button" href="order.html">Order now</a>
+        <a class="button" href="tel:03001234567">Call us</a>
+        <a class="button" href="mailto:hello@spillcafe.com">Email us</a>
+      </section>
+      <details class="review-card" open>
+        <summary><span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span> 5/5 · Customer review</summary>
+        <blockquote>“Wonderful ambiance with equally wonderful food. Very kind staff too!”</blockquote>
+        <cite>— A happy customer</cite>
+      </details>
+    </div>
   </main>
 
   <footer class="site-footer">

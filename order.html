@@ -220,7 +220,7 @@
 
   <script>
     const menuItems = [
-      { name: "Butter Croissant", icon: "🥐", price: 450 },
+      { name: "Butter Croissant", icon: "🥐", price: 400 },
       { name: "Chocolate Croissant", icon: "🥐", price: 400 },
       { name: "Tarte au Citron", icon: "🥧", price: 750 },
       { name: "Raspberry Frangipane Tart", icon: "🥧", price: 750 },
@@ -236,11 +236,11 @@
       { name: "NY Special Panini", icon: "🧀", price: 950 },
       { name: "Beef Panini", icon: "🧀", price: 1100 },
       { name: "Creamy Herb Pasta", icon: "🍝", price: 1250 },
-      { name: "Hot Coffee", icon: "☕", price: 550 },
+      { name: "Coffee", icon: "☕", sizes: [{ name: "Medium", shortName: "M", price: 700 }, { name: "Large", shortName: "L", price: 850 }] },
       { name: "Hot Tea", icon: "☕", price: 350 },
       { name: "Iced Latte", icon: "🧋", price: 650 },
       { name: "Iced Tea", icon: "🧋", price: 450 },
-      { name: "Ice Cream Milkshake", icon: "🥤", sizes: [{ name: "Medium", price: 650 }, { name: "Large", price: 800 }] }
+      { name: "Ice Cream Milkshake", icon: "🥤", sizes: [{ name: "Medium", shortName: "M", price: 650 }, { name: "Large", shortName: "L", price: 800 }] }
     ];
     const formatPrice = amount => `Rs ${amount.toLocaleString("en-PK")}`;
     const menuList = document.querySelector("#menu-list");
@@ -261,7 +261,7 @@
       name.textContent = `${item.icon} ${item.name}`;
       const price = document.createElement("p");
       price.textContent = item.sizes
-        ? item.sizes.map(size => `${size.name} ${formatPrice(size.price)}`).join(" · ")
+        ? item.sizes.map(size => `${size.shortName} ${formatPrice(size.price)}`).join(", ")
         : formatPrice(item.price);
       info.append(name, price);
 
