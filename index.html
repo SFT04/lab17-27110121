@@ -26,6 +26,13 @@
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--cream); line-height: 1.6; }
     a { color: inherit; }
+    .special-banner {
+      padding: 10px 20px;
+      background: var(--blush);
+      color: var(--cocoa);
+      font-weight: 800;
+      text-align: center;
+    }
     .site-header {
       width: min(1120px, calc(100% - 40px));
       min-height: 82px;
@@ -141,6 +148,7 @@
   </style>
 </head>
 <body>
+  <aside class="special-banner">Today's special: Nutella croissant, Rs 450</aside>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Spill. café home">Spill.</a>
     <nav class="site-nav" aria-label="Main navigation">
