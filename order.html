@@ -143,6 +143,8 @@
     .thank-you h2 { margin: 0 0 6px; }
     .thank-you p { margin: 0; }
     .thank-you[hidden] { display: none; }
+    .site-footer { padding: 24px 20px; background: var(--beige); text-align: center; }
+    .site-footer p { margin: 0; }
     @media (max-width: 700px) {
       .form-fields { grid-template-columns: 1fr; }
       .menu-list { grid-template-columns: 1fr; }
@@ -200,6 +202,12 @@
       <p>Your order total is <span id="confirmed-total"></span>. We look forward to seeing you.</p>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <p><strong>Opening hours:</strong> 8 am to 11 pm</p>
+    <p><strong>Address:</strong> Y-Block, DHA Phase 3, Lahore</p>
+    <p>Made with love at Spill. café</p>
+  </footer>
 
   <script>
     const menuItems = [
