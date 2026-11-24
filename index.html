@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF8F0">
+  <title>Spill. café | Freshly baked, made with love</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #FFF8F0;
+      --beige: #F3E5D0;
+      --caramel: #C8875A;
+      --cocoa: #5C3D2E;
+      --blush: #F6D6D0;
+      --white: #FFFCF8;
+      font-family: "Nunito", sans-serif;
+      color: var(--cocoa);
+      background: var(--cream);
+      scroll-behavior: smooth;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--cream); line-height: 1.6; }
+    a { color: inherit; }
+    .site-header {
+      width: min(1120px, calc(100% - 40px));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      color: var(--caramel);
+      font: 400 2rem/1.2 "Pacifico", cursive;
+      text-decoration: none;
+    }
+    .site-nav { display: flex; align-items: center; gap: 26px; }
+    .site-nav a { font-weight: 800; text-decoration: none; }
+    .site-nav a:hover, .text-link:hover { color: var(--caramel); }
+    .hero {
+      width: min(1120px, calc(100% - 40px));
+      min-height: 430px;
+      margin: 10px auto 76px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      border-radius: 30px;
+      background: var(--beige);
+    }
+    .hero-copy { padding: clamp(30px, 6vw, 78px); }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--caramel);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: 0;
+      color: var(--caramel);
+      font: 400 clamp(3.2rem, 7vw, 5.7rem)/1.2 "Pacifico", cursive;
+    }
+    .hero-copy > p:not(.eyebrow) { margin: 12px 0 0; font-size: 1.25rem; font-weight: 700; }
+    .hero-photo { width: 100%; height: 100%; min-height: 430px; object-fit: cover; }
+    main { padding-bottom: 56px; }
+    .menu-section, .about {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto 74px;
+    }
+    .section-heading { margin-bottom: 28px; text-align: center; }
+    .section-heading h2, .about h2 {
+      margin: 0;
+      color: var(--caramel);
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      line-height: 1.2;
+    }
+    .section-heading p { margin: 8px 0 0; }
+    .menu-group { margin: 38px 0 0; }
+    .menu-group h3 {
+      margin: 0 0 16px;
+      color: var(--caramel);
+      font-size: 1.45rem;
+    }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .menu-card {
+      min-height: 154px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: 20px;
+      background: var(--beige);
+    }
+    .menu-card h4 { margin: 0 0 5px; font-size: 1.1rem; }
+    .menu-card p { margin: 0; }
+    .menu-card .price { margin-top: auto; padding-top: 12px; color: var(--caramel); font-weight: 800; }
+    .about {
+      padding: clamp(28px, 5vw, 54px);
+      border-radius: 26px;
+      background: var(--blush);
+      text-align: center;
+    }
+    .about p { max-width: 700px; margin: 14px auto 24px; }
+    .button {
+      min-height: 48px;
+      padding: 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      background: var(--caramel);
+      color: var(--white);
+      font: 800 1rem "Nunito", sans-serif;
+      text-decoration: none;
+      transition: transform 160ms ease, filter 160ms ease;
+    }
+    .button:hover { filter: brightness(1.04); transform: translateY(-2px); }
+    .site-footer { padding: 24px 20px; background: var(--beige); text-align: center; }
+    .site-footer p { margin: 0; }
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { padding-bottom: 28px; }
+      .hero-photo { min-height: 270px; max-height: 360px; }
+      .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 480px) {
+      .site-header { width: min(100% - 28px, 1120px); min-height: 72px; }
+      .site-nav { gap: 14px; font-size: 0.9rem; }
+      .hero, .menu-section, .about { width: calc(100% - 28px); }
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spill. café home">Spill.</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Freshly baked</p>
+        <h1 id="hero-title">Spill.</h1>
+        <p>Spill the tea with something sweet</p>
+      </div>
+      <img class="hero-photo" src="cafe.jpg" alt="A warm, welcoming view of Spill. café">
+    </section>
+
+    <section class="menu-section" id="menu" aria-labelledby="menu-title">
+      <div class="section-heading">
+        <p class="eyebrow">Made fresh for you</p>
+        <h2 id="menu-title">Our menu</h2>
+        <p>Find a new favourite, or come back to an old one.</p>
+      </div>
+
+      <section class="menu-group" aria-labelledby="pastries-title">
+        <h3 id="pastries-title">Pastries</h3>
+        <div class="menu-grid">
+          <article class="menu-card"><h4>🥐 Butter Croissant</h4><p>Flaky, golden layers with a buttery finish.</p><p class="price">Rs 450</p></article>
+          <article class="menu-card"><h4>🥐 Chocolate Croissant</h4><p>Flaky pastry filled with rich chocolate.</p><p class="price">Rs 400</p></article>
+          <article class="menu-card"><h4>🥧 Tarte au Citron</h4><p>A classic French lemon tart.</p><p class="price">Rs 750</p></article>
+          <article class="menu-card"><h4>🥧 Raspberry Frangipane Tart</h4><p>Almond cream with fresh raspberries.</p><p class="price">Rs 750</p></article>
+          <article class="menu-card"><h4>🥐 Puff Pastry</h4><p>Light, crisp pastry baked fresh each morning.</p><p class="price">Rs 400</p></article>
+          <article class="menu-card"><h4>🧁 Vanilla Muffin</h4><p>Soft vanilla muffin with a tender crumb.</p><p class="price">Rs 500</p></article>
+        </div>
+      </section>
+
+      <section class="menu-group" aria-labelledby="sweet-title">
+        <h3 id="sweet-title">Sweet Tooth</h3>
+        <div class="menu-grid">
+          <article class="menu-card"><h4>🍫 Classic Brownie</h4><p>Rich chocolate with a soft, fudgy centre.</p><p class="price">Rs 400</p></article>
+          <article class="menu-card"><h4>🍫 Fudge Brownie</h4><p>A deeply chocolatey brownie with a fudgy finish.</p><p class="price">Rs 500</p></article>
+          <article class="menu-card"><h4>🍰 Cake Slice</h4><p>Light, fluffy cake layered with smooth frosting.</p><p class="price">Rs 550</p></article>
+          <article class="menu-card"><h4>🍪 Chocolate Chip Cookie</h4><p>A golden, chewy cookie packed with chocolate.</p><p class="price">Rs 350</p></article>
+          <article class="menu-card"><h4>🍪 Hazelnut Cookie</h4><p>A golden, chewy cookie with toasted hazelnut.</p><p class="price">Rs 350</p></article>
+        </div>
+      </section>
+
+      <section class="menu-group" aria-labelledby="sandwiches-title">
+        <h3 id="sandwiches-title">Sandwiches &amp; Paninis</h3>
+        <div class="menu-grid">
+          <article class="menu-card"><h4>🥪 Garden Sandwich</h4><p>Fresh vegetables with our creamy house spread.</p><p class="price">Rs 850</p></article>
+          <article class="menu-card"><h4>🧀 Melted Cheese Panini</h4><p>Toasted bread with warm, melty cheese.</p><p class="price">Rs 950</p></article>
+          <article class="menu-card"><h4>🧀 NY Special Panini</h4><p>A hearty toasted panini with our New York-inspired filling.</p><p class="price">Rs 950</p></article>
+        </div>
+      </section>
+
+      <section class="menu-group" aria-labelledby="pasta-title">
+        <h3 id="pasta-title">Pasta</h3>
+        <div class="menu-grid">
+          <article class="menu-card"><h4>🍝 Creamy Herb Pasta</h4><p>Comforting pasta in a creamy herb sauce.</p><p class="price">Rs 1,250</p></article>
+        </div>
+      </section>
+
+      <section class="menu-group" aria-labelledby="drinks-title">
+        <h3 id="drinks-title">Drinks</h3>
+        <div class="menu-grid">
+          <article class="menu-card"><h4>☕ Hot Coffee</h4><p>Freshly brewed coffee, served warm.</p><p class="price">Rs 550</p></article>
+          <article class="menu-card"><h4>☕ Hot Tea</h4><p>A comforting cup of freshly steeped tea.</p><p class="price">Rs 350</p></article>
+          <article class="menu-card"><h4>🧋 Iced Latte</h4><p>Chilled espresso and milk over ice.</p><p class="price">Rs 650</p></article>
+          <article class="menu-card"><h4>🧋 Iced Tea</h4><p>Refreshing tea served cold over ice.</p><p class="price">Rs 450</p></article>
+          <article class="menu-card"><h4>🥤 Ice Cream Milkshake</h4><p>A cool, creamy treat blended with ice cream.</p><p class="price">Medium Rs 650 · Large Rs 800</p></article>
+        </div>
+      </section>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <p class="eyebrow">A warm welcome, always</p>
+      <h2 id="about-title">A little corner to feel at home</h2>
+      <p>At Spill., we make the good things fresh and serve them with a little extra love. Stop by for a pastry, stay for a cup, and make yourself at home.</p>
+      <a class="button" href="order.html">Order now</a>
+      <a class="button" href="tel:03001234567">Call us</a>
+      <a class="button" href="mailto:hello@spillcafe.com">Email us</a>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>Made with love at Spill. café</p></footer>
+</body>
+</html>

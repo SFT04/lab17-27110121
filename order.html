@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF8F0">
+  <title>Place an order | Spill. café</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #FFF8F0;
+      --beige: #F3E5D0;
+      --caramel: #C8875A;
+      --cocoa: #5C3D2E;
+      --blush: #F6D6D0;
+      --white: #FFFCF8;
+      font-family: "Nunito", sans-serif;
+      color: var(--cocoa);
+      background: var(--cream);
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--cream); line-height: 1.6; }
+    a { color: inherit; }
+    .site-header {
+      width: min(1000px, calc(100% - 40px));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { color: var(--caramel); font: 400 2rem/1.2 "Pacifico", cursive; text-decoration: none; }
+    .back-link { font-weight: 800; text-decoration: none; }
+    .back-link:hover { color: var(--caramel); }
+    main { width: min(1000px, calc(100% - 40px)); margin: 18px auto 72px; }
+    .page-heading { margin-bottom: 26px; text-align: center; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--caramel);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { color: var(--caramel); }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.2; }
+    .page-heading > p:last-child { margin: 10px 0 0; }
+    .order-form { display: grid; gap: 24px; }
+    .menu-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .order-item {
+      min-height: 110px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-radius: 18px;
+      background: var(--beige);
+    }
+    .item-info h3 { margin: 0 0 4px; color: var(--cocoa); font-size: 1.05rem; }
+    .item-info p { margin: 0; color: var(--caramel); font-weight: 800; }
+    .quantity-control { display: grid; gap: 4px; flex: 0 0 76px; text-align: center; }
+    .quantity-control label { font-size: 0.8rem; font-weight: 800; }
+    .quantity-control input {
+      width: 76px;
+      min-height: 42px;
+      padding: 6px;
+      border: 2px solid var(--blush);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--cocoa);
+      font: 700 1rem "Nunito", sans-serif;
+      text-align: center;
+    }
+    .size-control { display: grid; gap: 4px; margin-bottom: 4px; }
+    .size-control label { font-size: 0.8rem; font-weight: 800; }
+    .size-control select {
+      width: 100%;
+      min-width: 0;
+      min-height: 38px;
+      padding: 5px 8px;
+      border: 2px solid var(--blush);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--cocoa);
+      font: 700 0.9rem "Nunito", sans-serif;
+    }
+    input:focus { outline: 3px solid var(--caramel); outline-offset: 2px; }
+    .total-panel {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-radius: 18px;
+      background: var(--blush);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+    .total-panel output { color: var(--caramel); font-size: 1.5rem; }
+    .details-panel { padding: clamp(20px, 4vw, 34px); border-radius: 22px; background: var(--beige); }
+    .details-panel h2 { margin: 0 0 18px; font-size: 1.5rem; }
+    .form-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .field { display: grid; gap: 7px; }
+    .field label { font-weight: 800; }
+    .field input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 2px solid var(--blush);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--cocoa);
+      font: 600 1rem "Nunito", sans-serif;
+    }
+    .field-hint { margin: -3px 0 0; font-size: 0.84rem; }
+    .error-message { margin: 14px 0 0; color: var(--cocoa); font-weight: 800; }
+    .error-message[hidden] { display: none; }
+    .button {
+      min-height: 48px;
+      padding: 12px 24px;
+      justify-self: start;
+      border: 0;
+      border-radius: 999px;
+      background: var(--caramel);
+      color: var(--white);
+      font: 800 1rem "Nunito", sans-serif;
+      cursor: pointer;
+    }
+    .button:hover { filter: brightness(1.04); }
+    .thank-you {
+      padding: 20px 24px;
+      border: 2px solid var(--caramel);
+      border-radius: 18px;
+      background: var(--blush);
+      font-weight: 800;
+    }
+    .thank-you h2 { margin: 0 0 6px; }
+    .thank-you p { margin: 0; }
+    .thank-you[hidden] { display: none; }
+    @media (max-width: 700px) {
+      .form-fields { grid-template-columns: 1fr; }
+      .menu-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .site-header, main { width: calc(100% - 28px); }
+      .order-item { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spill. café home">Spill.</a>
+    <a class="back-link" href="index.html#menu">← Back to the menu</a>
+  </header>
+
+  <main>
+    <div class="page-heading">
+      <p class="eyebrow">Freshly baked, made with love</p>
+      <h1>Place your order</h1>
+      <p>Choose your favourites and tell us when to have them ready.</p>
+    </div>
+
+    <form class="order-form" id="order-form" novalidate>
+      <div class="menu-list" id="menu-list" aria-label="Menu items"></div>
+      <div class="total-panel">
+        <span>Order total</span>
+        <output id="order-total" aria-live="polite">Rs 0</output>
+      </div>
+
+      <section class="details-panel" aria-labelledby="details-title">
+        <h2 id="details-title">Your details</h2>
+        <div class="form-fields">
+          <div class="field">
+            <label for="customer-name">Name</label>
+            <input id="customer-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="pickup-time">Pickup time</label>
+            <input id="pickup-time" name="pickup-time" type="time" required>
+          </div>
+          <div class="field">
+            <label for="phone-number">11-digit phone number</label>
+            <input id="phone-number" name="phone" type="tel" inputmode="numeric" autocomplete="tel" pattern="[0-9]{11}" maxlength="11" aria-describedby="phone-hint phone-error" required>
+            <p class="field-hint" id="phone-hint">Enter exactly 11 digits.</p>
+          </div>
+        </div>
+        <p class="error-message" id="phone-error" role="alert" hidden>Please enter a phone number with exactly 11 digits.</p>
+      </section>
+      <button class="button" type="submit">Place order</button>
+    </form>
+
+    <section class="thank-you" id="thank-you" role="status" aria-live="polite" hidden>
+      <h2>Thank you for your order!</h2>
+      <p>Your order total is <span id="confirmed-total"></span>. We look forward to seeing you.</p>
+    </section>
+  </main>
+
+  <script>
+    const menuItems = [
+      { name: "Butter Croissant", icon: "🥐", price: 450 },
+      { name: "Chocolate Croissant", icon: "🥐", price: 400 },
+      { name: "Tarte au Citron", icon: "🥧", price: 750 },
+      { name: "Raspberry Frangipane Tart", icon: "🥧", price: 750 },
+      { name: "Puff Pastry", icon: "🥐", price: 400 },
+      { name: "Vanilla Muffin", icon: "🧁", price: 500 },
+      { name: "Classic Brownie", icon: "🍫", price: 400 },
+      { name: "Fudge Brownie", icon: "🍫", price: 500 },
+      { name: "Cake Slice", icon: "🍰", price: 550 },
+      { name: "Chocolate Chip Cookie", icon: "🍪", price: 350 },
+      { name: "Hazelnut Cookie", icon: "🍪", price: 350 },
+      { name: "Garden Sandwich", icon: "🥪", price: 850 },
+      { name: "Melted Cheese Panini", icon: "🧀", price: 950 },
+      { name: "NY Special Panini", icon: "🧀", price: 950 },
+      { name: "Creamy Herb Pasta", icon: "🍝", price: 1250 },
+      { name: "Hot Coffee", icon: "☕", price: 550 },
+      { name: "Hot Tea", icon: "☕", price: 350 },
+      { name: "Iced Latte", icon: "🧋", price: 650 },
+      { name: "Iced Tea", icon: "🧋", price: 450 },
+      { name: "Ice Cream Milkshake", icon: "🥤", sizes: [{ name: "Medium", price: 650 }, { name: "Large", price: 800 }] }
+    ];
+    const formatPrice = amount => `Rs ${amount.toLocaleString("en-PK")}`;
+    const menuList = document.querySelector("#menu-list");
+    const totalOutput = document.querySelector("#order-total");
+    const form = document.querySelector("#order-form");
+    const phoneInput = document.querySelector("#phone-number");
+    const phoneError = document.querySelector("#phone-error");
+    const thankYou = document.querySelector("#thank-you");
+    const confirmedTotal = document.querySelector("#confirmed-total");
+
+    menuItems.forEach((item, index) => {
+      const card = document.createElement("article");
+      card.className = "order-item";
+
+      const info = document.createElement("div");
+      info.className = "item-info";
+      const name = document.createElement("h3");
+      name.textContent = `${item.icon} ${item.name}`;
+      const price = document.createElement("p");
+      price.textContent = item.sizes
+        ? item.sizes.map(size => `${size.name} ${formatPrice(size.price)}`).join(" · ")
+        : formatPrice(item.price);
+      info.append(name, price);
+
+      const control = document.createElement("div");
+      control.className = "quantity-control";
+      if (item.sizes) {
+        const sizeControl = document.createElement("div");
+        sizeControl.className = "size-control";
+        const sizeLabel = document.createElement("label");
+        sizeLabel.htmlFor = `size-${index}`;
+        sizeLabel.textContent = "Size";
+        const sizeSelect = document.createElement("select");
+        sizeSelect.id = `size-${index}`;
+        sizeSelect.name = `size-${index}`;
+        sizeSelect.setAttribute("aria-label", `${item.name} size`);
+        item.sizes.forEach(size => {
+          const option = document.createElement("option");
+          option.value = String(size.price);
+          option.textContent = size.name;
+          sizeSelect.append(option);
+        });
+        sizeSelect.addEventListener("change", updateTotal);
+        sizeControl.append(sizeLabel, sizeSelect);
+        control.append(sizeControl);
+      }
+      const label = document.createElement("label");
+      label.htmlFor = `quantity-${index}`;
+      label.textContent = "Quantity";
+      const quantity = document.createElement("input");
+      quantity.id = `quantity-${index}`;
+      quantity.name = `quantity-${index}`;
+      quantity.type = "number";
+      quantity.min = "0";
+      quantity.max = "10";
+      quantity.step = "1";
+      quantity.value = "0";
+      quantity.inputMode = "numeric";
+      quantity.dataset.price = String(item.price ?? item.sizes[0].price);
+      quantity.setAttribute("aria-label", `${item.name} quantity`);
+      quantity.addEventListener("input", () => {
+        if (quantity.value !== "") {
+          quantity.value = String(Math.min(10, Math.max(0, Math.floor(Number(quantity.value) || 0))));
+        }
+        updateTotal();
+      });
+      control.append(label, quantity);
+      card.append(info, control);
+      menuList.append(card);
+    });
+
+    function updateTotal() {
+      const total = [...menuList.querySelectorAll(".order-item")]
+        .reduce((sum, card) => {
+          const quantity = card.querySelector('input[type="number"]');
+          const size = card.querySelector("select");
+          const price = size ? Number(size.value) : Number(quantity.dataset.price);
+          return sum + price * (Number(quantity.value) || 0);
+        }, 0);
+      totalOutput.value = formatPrice(total);
+      totalOutput.textContent = formatPrice(total);
+      return total;
+    }
+
+    phoneInput.addEventListener("input", () => {
+      phoneError.hidden = true;
+      phoneInput.removeAttribute("aria-invalid");
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const requiredDetails = [...form.querySelectorAll('input[required]:not(#phone-number)')];
+      const invalidDetail = requiredDetails.find(input => !input.checkValidity());
+      if (invalidDetail) {
+        invalidDetail.reportValidity();
+        return;
+      }
+
+      const phoneIsValid = /^[0-9]{11}$/.test(phoneInput.value);
+      if (!phoneIsValid) {
+        phoneError.hidden = false;
+        phoneInput.setAttribute("aria-invalid", "true");
+        phoneInput.focus();
+        return;
+      }
+
+      phoneError.hidden = true;
+      phoneInput.removeAttribute("aria-invalid");
+      confirmedTotal.textContent = formatPrice(updateTotal());
+      form.hidden = true;
+      thankYou.hidden = false;
+    });
+  </script>
+</body>
+</html>
